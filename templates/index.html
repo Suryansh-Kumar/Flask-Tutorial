@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Jovian Careers</title>
+		<title>{{company_name}} Careers</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -11,17 +11,23 @@
 			crossorigin="anonymous"
 		/>
 	</head>
-    <style>
-        #banner{
-            width: 100%;
-            height: 360px;
-            object-fit: cover;
-        }
-    </style>
+	<style>
+		#banner {
+			width: 100%;
+			height: 360px;
+			object-fit: cover;
+		}
+	</style>
 	<body>
 		<div class="container">
-			<h1 class="text-center mt-2 mb-4">Jovian Careers</h1>
-			<img class="img-fluid" id="banner" src="/static/banner.jpg" alt="" height="320" />
+			<h1 class="text-center mt-2 mb-4">{{company_name}} Careers</h1>
+			<img
+				class="img-fluid"
+				id="banner"
+				src="/static/banner.jpg"
+				alt=""
+				height="320"
+			/>
 			<h2 class="text-center mt-2 mb-4">About Jovian</h2>
 			<p class="lead">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -33,12 +39,23 @@
 				sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
 			<h2 class="text-center mt-2 mb-4">Open Positions</h2>
-			<p>TODO - Show the Jobs Here!</p>
+			<div>
+				{% for job in jobs %}
+				{% include 'jobitem.html' %}
+				{% endfor %}
+			</div>
 			<div class="text-center">
 				<button class="btn btn-primary btn-lg">Contact Us</button>
-				<p class="mt-4">Copyright Suryansh &copy; 2023</p>
+				<p class="mt-4">
+					Copyright Suryansh &copy; <span id="element"></span>
+				</p>
 			</div>
 		</div>
+		<script>
+			let element = document.getElementById("element");
+			const currentYear = new Date().getFullYear();
+			element.innerHTML = currentYear;
+		</script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

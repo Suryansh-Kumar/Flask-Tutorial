@@ -31,8 +31,28 @@ JOBS = [
 
 
 @app.route("/")
-def hello_world():
+def home():
     return render_template("index.html", jobs=JOBS, company_name="Jovian")
+
+
+@app.route("/about")
+def about():
+    return "<h1>ABOUT</h1>"
+
+
+@app.route("/projects")
+def projs():
+    return "<h1>PROJECTS</h1>"
+
+
+@app.route("/services")
+def services():
+    return "<h1>SERVICES</h1>"
+
+
+@app.route("/blogs")
+def blogs():
+    return "<h1>BLOGS</h1>"
 
 @app.route("/api/jobs")
 def jobs():
